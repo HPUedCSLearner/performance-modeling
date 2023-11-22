@@ -77,10 +77,10 @@ def getNetVal(net, x):
     return res.numpy()[0] * amplification_factor
 
 def load_deeplearn_model(models, modlepath):
-    net1.load_state_dict(torch.load(modlepath + 'model-1.pt'))
-    net2.load_state_dict(torch.load(modlepath + 'model-2.pt'))
-    net3.load_state_dict(torch.load(modlepath + 'model-3.pt'))
-    net4.load_state_dict(torch.load(modlepath + 'model-4.pt'))
+    net1.load_state_dict(torch.load(modlepath + 'model.atm.pt'))
+    net2.load_state_dict(torch.load(modlepath + 'model.ocn.pt'))
+    net3.load_state_dict(torch.load(modlepath + 'model.ice.pt'))
+    net4.load_state_dict(torch.load(modlepath + 'model.lnd.pt'))
     
     # print('===========================')
     # print(getNetVal(net1, 300))
