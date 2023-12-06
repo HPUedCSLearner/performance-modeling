@@ -64,6 +64,8 @@ net4 = nn.Sequential(
     nn.Linear(10, 1)
 )
 
+def de_normalization(y, min_y, max_y):
+    return (max_y - min_y) * y + min_y
 
 # 放大因子： amplify factor
 amplification_factor = 1e4
@@ -138,7 +140,7 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
 
     # 调试用
     # print('===========================')
-    # print(getNetVal(deeplearn_models['ice'], 300))
+    # print(getNetVal(deeplearn_models['ice'], 8))
     # print('===========================')
     
     #计算拟合数据
@@ -147,12 +149,18 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
         if model == 'ice':
             for i in ice_procs:
                 # tmp_data[i] = module_fit(i, fitparameters['ice'])
-                tmp_data[i] = getNetVal(deeplearn_models['ice'] ,i)
+                # tmp_data[i] = getNetVal(deeplearn_models['ice'] ,i)
+                min = deeplearn_models['models_max_min']['ice']['min']
+                max = deeplearn_models['models_max_min']['ice']['max']
+                tmp_data[i] = de_normalization(getNetVal(deeplearn_models['ice'] ,i), min, max)
         else:
             i = mintasks
             while i <= totaltasks:
                 # tmp_data[i] = module_fit(i, fitparameters[model])
-                tmp_data[i] = getNetVal(deeplearn_models[model] ,i)
+                # tmp_data[i] = getNetVal(deeplearn_models[model] ,i)
+                min = deeplearn_models['models_max_min'][model]['min']
+                max = deeplearn_models['models_max_min'][model]['max']
+                tmp_data[i] = de_normalization(getNetVal(deeplearn_models[model] ,i), min, max)
                 i += 2
         data[model] = tmp_data     
     return data
@@ -248,6 +256,13 @@ if __name__ == "__main__" :
     # deeplearn_models = load_deeplearn_model(models, '/home/feng/wys/github/ecnu-tpf/yiping_loadbalance-wiht-deeplean-model/deeplearn-models/')
     cur_path = os.getcwd()
     deeplearn_models = load_deeplearn_model(models, cur_path + '/deeplearn-models/')
+    
+    ## 加载模型min,max值
+    with open(cur_path + "/deeplearn-models/models_max_min.json", 'r') as f:
+        f_content = f.read()
+        models_max_min_json = json.loads(f_content)
+    deeplearn_models["models_max_min"] = models_max_min_json
+    
     
     best_solution = model_layout(totaltasks, models, mintasks, ice_procs, deeplearn_models)
     print(best_solution)
