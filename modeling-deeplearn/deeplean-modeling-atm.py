@@ -105,7 +105,7 @@ plt.show()
 
 # 测试一个数据
 # x = torch.tensor([300])
-x = torch.tensor([300.])  # tensor([[0.0259]])
+x = torch.tensor([48.])  # tensor([[0.0259]])
 x = x.reshape(-1, 1)
 print(model.forward(x).data)
 print(de_normalization(model.forward(x).data, min_y, max_y))

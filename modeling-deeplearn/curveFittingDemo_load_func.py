@@ -76,10 +76,10 @@ net4 = nn.Sequential(
 
 #=#=#==#=#==#=#==#=#=对于加载模型，只需要模型网格 和 所保存的 模型参数的key-val 一致=#=#==#=#==#=#==#=#==#=#==#=#=
 # 加载模型 
-net1.load_state_dict(torch.load('model-1.pt'))
-net2.load_state_dict(torch.load('model-2.pt'))
-net3.load_state_dict(torch.load('model-3.pt'))
-net4.load_state_dict(torch.load('model-4.pt'))
+net1.load_state_dict(torch.load('model.atm.pt'))
+net2.load_state_dict(torch.load('model.lnd.pt'))
+net3.load_state_dict(torch.load('model.ice.pt'))
+net4.load_state_dict(torch.load('model.ocn.pt'))
 
 # 测试一个数据
 # x = torch.tensor([300])
