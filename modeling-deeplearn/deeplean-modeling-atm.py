@@ -6,6 +6,7 @@ from torch import nn
 from IPython import embed
 
 import json
+import os
 
 torch.set_default_dtype(torch.float64)
 
@@ -139,7 +140,8 @@ if not os.path.exists(filename):
     
 with open(filename, 'r') as file:
     file_content = file.read()
-    
+
+## step2: 读取文件后，转成json，写入需要的json数据 
 model_min_max_val_json_data = json.loads(file_content)   
         
 model_min_max_val_json_data['atm'] = {}
@@ -150,7 +152,7 @@ model_min_max_val_json_data['atm']['max'] = max_y.tolist()
 # print(min_y.tolist())     # 383372109773
 
 
-# 将 JSON 数据写回文件
+## step3: 将 JSON 数据写回文件
 with open(filename, 'w') as file:
     json.dump(model_min_max_val_json_data, file, indent=2)
     print(f"JSON 数据已成功写回文件 {filename}")

@@ -5,6 +5,8 @@ import torch
 from torch import nn
 from IPython import embed
 
+import json
+import os
 
 torch.set_default_dtype(torch.float64)
 
@@ -126,3 +128,33 @@ torch.save(model.state_dict(), 'model.ocn.pt')
 # # 使用模型
 # # print(new_net.forward(x).data)
 # print(new_net(x))
+
+
+# 把min_y, max_y写道文件里，为了在调优的时候，能够还原数据
+# 使用真实的数据进行的调优
+
+## step1: 读取文件
+filename = "models_max_min.json"
+
+if not os.path.exists(filename):
+        with open(filename, 'w') as file:
+            file.write('{}')
+    
+with open(filename, 'r') as file:
+    file_content = file.read()
+
+## step2: 读取文件后，转成json，写入需要的json数据 
+model_min_max_val_json_data = json.loads(file_content)   
+        
+model_min_max_val_json_data['ocn'] = {}
+model_min_max_val_json_data['ocn']['min'] = min_y.tolist()
+model_min_max_val_json_data['ocn']['max'] = max_y.tolist()
+
+# print(min_y)              # tensor(383372109773)
+# print(min_y.tolist())     # 383372109773
+
+
+## step3: 将 JSON 数据写回文件
+with open(filename, 'w') as file:
+    json.dump(model_min_max_val_json_data, file, indent=2)
+    print(f"JSON 数据已成功写回文件 {filename}")
