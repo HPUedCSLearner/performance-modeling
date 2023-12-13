@@ -143,6 +143,8 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
     # print(getNetVal(deeplearn_models['ice'], 8))
     # print('===========================')
     
+    
+    # 2e9  means 2.0Ghz
     #计算拟合数据
     for model in models:
         tmp_data = {}
@@ -152,7 +154,7 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
                 # tmp_data[i] = getNetVal(deeplearn_models['ice'] ,i)
                 min = deeplearn_models['models_max_min']['ice']['min']
                 max = deeplearn_models['models_max_min']['ice']['max']
-                tmp_data[i] = de_normalization(getNetVal(deeplearn_models['ice'] ,i), min, max)
+                tmp_data[i] = de_normalization(getNetVal(deeplearn_models['ice'] ,i), min, max) / 2e9
         else:
             i = mintasks
             while i <= totaltasks:
@@ -160,7 +162,7 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
                 # tmp_data[i] = getNetVal(deeplearn_models[model] ,i)
                 min = deeplearn_models['models_max_min'][model]['min']
                 max = deeplearn_models['models_max_min'][model]['max']
-                tmp_data[i] = de_normalization(getNetVal(deeplearn_models[model] ,i), min, max)
+                tmp_data[i] = de_normalization(getNetVal(deeplearn_models[model] ,i), min, max) / 2e9
                 i += 2
         data[model] = tmp_data     
     return data
@@ -268,4 +270,3 @@ if __name__ == "__main__" :
     print(best_solution)
     run_time = time.time() - start_time
     print("run time: ", run_time, "s")
-
