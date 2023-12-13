@@ -1,0 +1,132 @@
+{
+    "casePath": "/public1/home/fio_climate_model/esm_liuyao/cases/tuning-cases/",
+    "modifyGptl": {
+        "item1": "./sampling/models/utils/timing/gptl.c",
+        "item2": "./sampling/models/utils/timing/private.h",
+        "item3": "./sampling/models/glc/cism/glimmer-cism/libgptl/gptl.c",
+        "item4": "./sampling/models/glc/cism/glimmer-cism/libgptl/private.h"
+    },
+    "libconfig": {
+        "staticLibPath": "-L /public1/home/fio_climate_model/esm_liuyao/my-c-hashlib/latest-wys-timer/lib",
+        "staticLibName": "-l mpiwrapper",
+        "sharedLibPath": "-L /public1/home/fio_climate_model/esm_liuyao/my-c-hashlib/latest-wys-timer/lib",
+        "sharedLibName": "-l hook"
+    },
+    "sampleTimes": [
+        {
+            "isCreate": "False",
+            "isInstrument": "False",
+            "isDistinguishModules": "False",
+            "caseName": "serial-1024-process-6-ndays",
+            "stopN": "6",
+            "stopN-unit": "ndays",
+            "processLayOut": {
+                "TOTALPES": "1024",
+                "ROOTPE_ATM": "0",
+                "NTASKS_ATM": "1024",
+                "ROOTPE_LND": "0",
+                "NTASKS_LND": "1024",
+                "ROOTPE_ICE": "0",
+                "NTASKS_ICE": "1024",
+                "ROOTPE_OCN": "0",
+                "NTASKS_OCN": "1024",
+                "ROOTPE_CPL": "0",
+                "NTASKS_CPL": "1024",
+                "ROOTPE_ROF": "0",
+                "NTASKS_ROF": "1024",
+                "ROOTPE_GLC": "0",
+                "NTASKS_GLC": "1024",
+                "ROOTPE_WAV": "0",
+                "NTASKS_WAV": "1024"
+            }
+        },
+        {
+            "isCreate": "True",
+            "isInstrument": "False",
+            "isDistinguishModules": "False",
+            "caseName": "default-1024-process-6-ndays",
+            "stopN": "6",
+            "stopN-unit": "ndays",
+            "processLayOut": {
+                "TOTALPES": "1024",
+                "ROOTPE_ATM": "0",
+                "NTASKS_ATM": "512",
+                "ROOTPE_LND": "0",
+                "NTASKS_LND": "512",
+                "ROOTPE_ICE": "0",
+                "NTASKS_ICE": "512",
+                "ROOTPE_OCN": "512",
+                "NTASKS_OCN": "512",
+                "ROOTPE_CPL": "0",
+                "NTASKS_CPL": "512",
+                "ROOTPE_ROF": "0",
+                "NTASKS_ROF": "512",
+                "ROOTPE_GLC": "0",
+                "NTASKS_GLC": "512",
+                "ROOTPE_WAV": "0",
+                "NTASKS_WAV": "512"
+            }
+        },
+        {
+            "isCreate": "True",
+            "isInstrument": "False",
+            "isDistinguishModules": "False",
+            "caseName": "tuning-minitime-1024-process-6-ndays",
+            "stopN": "6",
+            "stopN-unit": "ndays",
+            "processLayOut": {
+                "TOTALPES": "1024",
+                "ROOTPE_ATM": "0",
+                "NTASKS_ATM": "722",
+
+                "ROOTPE_LND": "738",
+                "NTASKS_LND": "82",
+
+                "ROOTPE_ICE": "12",
+                "NTASKS_ICE": "32",
+
+                "ROOTPE_OCN": "52",
+                "NTASKS_OCN": "630",
+
+                "ROOTPE_CPL": "0",
+                "NTASKS_CPL": "1024",
+
+                "ROOTPE_ROF": "12",
+                "NTASKS_ROF": "32",
+
+                "ROOTPE_GLC": "500",
+                "NTASKS_GLC": "32",
+                "ROOTPE_WAV": "600",
+                "NTASKS_WAV": "32"
+            }
+        },
+        {
+            "isCreate": "False",
+            "isInstrument": "True",
+            "isDistinguishModules": "True",
+            "caseName": "serial-1024-process-4-ndays",
+            "stopN": "4",
+            "stopN-unit": "ndays",
+            "processLayOut": {
+                "TOTALPES": "1024",
+                "ROOTPE_ATM": "0",
+                "NTASKS_ATM": "1024",
+                "ROOTPE_LND": "0",
+                "NTASKS_LND": "1024",
+                "ROOTPE_ICE": "0",
+                "NTASKS_ICE": "1024",
+                "ROOTPE_OCN": "0",
+                "NTASKS_OCN": "1024",
+                "ROOTPE_CPL": "0",
+                "NTASKS_CPL": "1024",
+                "ROOTPE_ROF": "0",
+                "NTASKS_ROF": "1024",
+                "ROOTPE_GLC": "0",
+                "NTASKS_GLC": "1024",
+                "ROOTPE_WAV": "0",
+                "NTASKS_WAV": "1024"
+            }
+        }
+    ]
+}
+
