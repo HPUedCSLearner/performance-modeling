@@ -27,6 +27,8 @@ print("./xmlchange -file env_mach_pes.xml -id ROOTPE_GLC -val " + pes_data["ROOT
 print("./xmlchange -file env_mach_pes.xml -id NTASKS_GLC -val " + pes_data["NTASKS_GLC"])
 print("./xmlchange -file env_mach_pes.xml -id ROOTPE_WAV -val " + pes_data["ROOTPE_WAV"])
 print("./xmlchange -file env_mach_pes.xml -id NTASKS_WAV -val " + pes_data["NTASKS_WAV"])
+print("./xmlchange -file env_run.xml -id STOP_N -val " + pes_data["STOP_N"])
+print("./xmlchange -file env_run.xml -id STOP_OPTION -val " + pes_data["STOP_OPTION"])
 
 print("./xmlquery STOP_N")
 print("./xmlquery STOP_OPTION")
@@ -48,7 +50,8 @@ print("./xmlquery STOP_OPTION")
 # os.system("./xmlchange -file env_mach_pes.xml -id NTASKS_GLC -val " + pes_data["NTASKS_GLC"])
 # os.system("./xmlchange -file env_mach_pes.xml -id ROOTPE_WAV -val " + pes_data["ROOTPE_WAV"])
 # os.system("./xmlchange -file env_mach_pes.xml -id NTASKS_WAV -val " + pes_data["NTASKS_WAV"])
+# os.system("./xmlchange -file env_run.xml -id STOP_N -val " + pes_data["STOP_N"])
+# os.system("./xmlchange -file env_run.xml -id STOP_OPTION -val " + pes_data["STOP_OPTION"])
 
-
-#  os.system("./xmlquery STOP_N")
-#  os.system("./xmlquery STOP_OPTION")
+# os.system("./xmlquery STOP_N")
+# os.system("./xmlquery STOP_OPTION")
