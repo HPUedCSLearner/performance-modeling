@@ -1,0 +1,21 @@
+{
+    "TOTALPES": "1024",
+    "ROOTPE_ATM": "0",
+    "NTASKS_ATM": "512",
+    "ROOTPE_LND": "0",
+    "NTASKS_LND": "512",
+    "ROOTPE_ICE": "0",
+    "NTASKS_ICE": "512",
+    "ROOTPE_OCN": "512",
+    "NTASKS_OCN": "512",
+    "ROOTPE_CPL": "0",
+    "NTASKS_CPL": "512",
+    "ROOTPE_ROF": "0",
+    "NTASKS_ROF": "512",
+    "ROOTPE_GLC": "0",
+    "NTASKS_GLC": "512",
+    "ROOTPE_WAV": "0",
+    "NTASKS_WAV": "512",
+    "STOP_N": "6",
+    "STOP_OPTION": "ndays"
+}
