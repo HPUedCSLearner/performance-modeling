@@ -19,3 +19,34 @@
     "STOP_N": "6",
     "STOP_OPTION": "ndays"
 }
+
+{
+    "TOTALPES": "1024",
+
+    "ROOTPE_ATM": "0",
+    "NTASKS_ATM": "768",
+
+    "ROOTPE_LND": "0",
+    "NTASKS_LND": "768",
+
+    "ROOTPE_ICE": "128",
+    "NTASKS_ICE": "368",
+
+    "ROOTPE_OCN": "768",
+    "NTASKS_OCN": "256",
+
+    "ROOTPE_CPL": "0",
+    "NTASKS_CPL": "768",
+
+    "ROOTPE_ROF": "128",
+    "NTASKS_ROF": "256",
+
+    "ROOTPE_GLC": "0",
+    "NTASKS_GLC": "768",
+
+    "ROOTPE_WAV": "0",
+    "NTASKS_WAV": "768",
+
+    "STOP_N": "6",
+    "STOP_OPTION": "ndays"
+}
