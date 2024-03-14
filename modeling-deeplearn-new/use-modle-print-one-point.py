@@ -5,8 +5,8 @@ from torch import nn
 import json
 
 
-model_file = "model.ice.pt"
-minmaxflag = "ice"
+model_file = "model.rof.pt"
+minmaxflag = "rof"
 
 torch.set_default_dtype(torch.float64)
 
