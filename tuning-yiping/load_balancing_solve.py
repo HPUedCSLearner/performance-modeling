@@ -67,26 +67,19 @@ net4 = nn.Sequential(
 def de_normalization(y, min_y, max_y):
     return (max_y - min_y) * y + min_y
 
-# 放大因子： amplify factor
-amplification_factor = 1e4
 
 def getNetVal(net, x):
     ten = torch.as_tensor(x, dtype=torch.float64)
     ten = ten.reshape(-1, 1)
     res = net.forward(ten).data
     res = res.reshape(-1)
-    # print("In getNet1Val: ", x, res.numpy()[0] * amplification_factor)
-    return res.numpy()[0] * amplification_factor
+    return res.numpy()[0]
 
 def load_deeplearn_model(models, modlepath):
     net1.load_state_dict(torch.load(modlepath + 'model.atm.pt'))
     net2.load_state_dict(torch.load(modlepath + 'model.ocn.pt'))
     net3.load_state_dict(torch.load(modlepath + 'model.ice.pt'))
     net4.load_state_dict(torch.load(modlepath + 'model.lnd.pt'))
-    
-    # print('===========================')
-    # print(getNetVal(net1, 300))
-    # print('===========================')
     
     tmp_data = {}
     
@@ -154,7 +147,7 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
                 # tmp_data[i] = getNetVal(deeplearn_models['ice'] ,i)
                 min = deeplearn_models['models_max_min']['ice']['min']
                 max = deeplearn_models['models_max_min']['ice']['max']
-                tmp_data[i] = de_normalization(getNetVal(deeplearn_models['ice'] ,i), min, max) / 2e9
+                tmp_data[i] = de_normalization(getNetVal(deeplearn_models['ice'] ,i), min, max)
         else:
             i = mintasks
             while i <= totaltasks:
@@ -162,7 +155,7 @@ def get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_m
                 # tmp_data[i] = getNetVal(deeplearn_models[model] ,i)
                 min = deeplearn_models['models_max_min'][model]['min']
                 max = deeplearn_models['models_max_min'][model]['max']
-                tmp_data[i] = de_normalization(getNetVal(deeplearn_models[model] ,i), min, max) / 2e9
+                tmp_data[i] = de_normalization(getNetVal(deeplearn_models[model] ,i), min, max)
                 i += 2
         data[model] = tmp_data     
     return data
@@ -172,6 +165,9 @@ def model_layout(totaltasks, models, mintasks, ice_procs, deeplearn_models):
     all_solutions_cost = {}
     fitparameters = get_fitparameter()
     data = get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_models)
+    
+    # Debug
+    print(data)
     
     # 获取某模块数下的布局
     curpath = os.path.split(os.path.realpath(__file__))[0]
