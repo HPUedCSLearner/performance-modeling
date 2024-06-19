@@ -167,7 +167,7 @@ def model_layout(totaltasks, models, mintasks, ice_procs, deeplearn_models):
     data = get_data(fitparameters, models, totaltasks, mintasks, ice_procs, deeplearn_models)
     
     # Debug
-    print(data)
+    # print(data)
     
     # 获取某模块数下的布局
     curpath = os.path.split(os.path.realpath(__file__))[0]
